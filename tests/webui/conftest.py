@@ -54,15 +54,16 @@ def get_region(request):
 def driver(get_page, get_region):
     base_url = 'https://{}.rt.ru'.format(settings.REGIONS[get_region])
     logger.info('Start test')
-    caps = DesiredCapabilities.CHROME
+    # caps = DesiredCapabilities.CHROME
     options = webdriver.ChromeOptions()
     options.add_argument('--ignore-certificate-errors')
     options.add_argument('--start-maximized')
-    options.add_experimental_option('w3c', False)
+    # options.add_experimental_option('w3c', False)
     # caps['loggingPrefs'] = {'performance': 'ALL', 'browser': 'ALL'}
     # wd = EventFiringWebDriver(webdriver.Chrome(desired_capabilities=caps,
     #                                            options=options), MyListener())
-    wd = EventFiringWebDriver(webdriver.Chrome(options=options), MyListener())
+    # wd = EventFiringWebDriver(webdriver.Chrome(options=options), MyListener())
+    wd = webdriver.Chrome(options=options)
     if get_page == 'package':
         wd.get(url='{}/packages/tariffs'.format(base_url))
     elif get_page == 'internet':
