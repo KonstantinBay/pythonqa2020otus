@@ -21,6 +21,7 @@ logger = logging.getLogger('API requests')
 @allure.story(STORY_PAGE)
 @allure.title('{}: Landing Page'.format(TITLE_TEXT))
 @pytest.mark.api
+@pytest.mark.xfail
 @pytest.mark.parametrize('lp', ['/books', '/smarthome', '/lightplus', '/videocontrol', '/zakompaniyu', '/cometous'])
 @pytest.mark.parametrize('reg', range(1))
 def test_access_lp(get_url, get_status_code, lp, reg):
@@ -57,6 +58,7 @@ def test_get_region(api_client, get_status_code, service, method):
 @allure.story(STORY_SERV)
 @allure.title('Проверка полученных данных при параметризации запроса')
 @pytest.mark.api
+@pytest.mark.xfail
 @pytest.mark.parametrize('service, method', [(settings.SERVICES[0], settings.METHODS[3])])
 @pytest.mark.parametrize('locality', ['Краснодар', 'краснодар', 'КРАСНОДАР', 'Krasnodar', 'qwerty'])
 def test_get_locality(api_client, service, method, locality):
@@ -99,6 +101,7 @@ def test_get_banners(api_client, get_status_code, service, method, locality):
 @allure.story(STORY_SERV)
 @allure.title('Проверка создания заявки при параметризации запроса')
 @pytest.mark.api
+@pytest.mark.xfail
 @pytest.mark.parametrize('service, method', [(settings.SERVICES[4], settings.METHODS[5])])
 @pytest.mark.parametrize('city', [3092902, '3092902', '-1', '309290230929023092902', 'city_id', True])
 def test_create_order(api_client, city, service, method):
