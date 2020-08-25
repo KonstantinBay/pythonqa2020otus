@@ -12,13 +12,13 @@ logging.basicConfig(level=logging.INFO, filename=os.getcwd() + r'\logs\run_logs.
 def pytest_addoption(parser):
     parser.addoption(
         '--url',
-        default=f'https://{settings.REGIONS[settings.DEFAULT_REGION]}.rt.ru',
-        help=f'request url, default - "https://{settings.REGIONS[settings.DEFAULT_REGION]}.rt.ru"'
+        default='https://{}.rt.ru'.format(settings.REGIONS[settings.DEFAULT_REGION]),
+        help='request url, default - "https://{}.rt.ru"'.format(settings.REGIONS[settings.DEFAULT_REGION])
     )
     parser.addoption(
         '--base_path',
-        default=f'{settings.REQUEST_PATH}',
-        help=f'api request base path, default - "{settings.REQUEST_PATH}"'
+        default='{}'.format(settings.REQUEST_PATH),
+        help='api request base path, default - "{}"'.format(settings.REQUEST_PATH)
     )
     parser.addoption(
         '--status_code',

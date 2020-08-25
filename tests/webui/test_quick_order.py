@@ -55,8 +55,8 @@ def test_text_apply_btn(driver, main_page, order_form):
     logger.info('Apply button')
     with allure.step('Открыть форму быстрой заявки, если она не отображается'):
         order_form.open_form(driver)
-    logger.info(f'Button text is equal to {APPLY_BTN_TEXT}')
-    with allure.step(f'Текст на кнопке формы равен {APPLY_BTN_TEXT}'):
+    logger.info('Button text is equal to {}'.format(APPLY_BTN_TEXT))
+    with allure.step('Текст на кнопке формы равен {}'.format(APPLY_BTN_TEXT)):
         assert locators.element_is_visible(driver, order_form.apply_btn).text == APPLY_BTN_TEXT
 
 
@@ -102,14 +102,14 @@ def test_street_validation_neg(driver, main_page, order_form, street_param):
     logger.info('Negative validation street field')
     with allure.step('Открыть форму быстрой заявки, если она не отображается'):
         order_form.open_form(driver)
-    with allure.step(f'Проверка возможности ввода данных, {STREET_TITLE}'):
+    with allure.step('Проверка возможности ввода данных, {}'.format(STREET_TITLE)):
         street = locators.element_is_clickable(driver, order_form.street)
-    with allure.step(f'Очистить {STREET_TITLE}'):
+    with allure.step('Очистить {}'.format(STREET_TITLE)):
         street.clear()
-    with allure.step(f'Ввод, {STREET_TITLE}, не{VALID_DATA_TEXT}'):
+    with allure.step('Ввод, {}, не{}'.format(STREET_TITLE, VALID_DATA_TEXT)):
         street.send_keys(street_param)
     logger.info('Validation text is present' + ', ' + STREET_TITLE + ', input data: ' + street_param)
-    with allure.step(f'Проверка отображения сообщения, не{VALID_DATA_TEXT}'):
+    with allure.step('Проверка отображения сообщения, не{}'.format(VALID_DATA_TEXT)):
         assert locators.element_is_visible(driver, order_form.street_error_msg)
 
 
@@ -123,11 +123,11 @@ def test_street_validation_pos(driver, main_page, order_form, street_param):
     logger.info('Positive validation street field')
     with allure.step('Открыть форму быстрой заявки, если она не отображается'):
         order_form.open_form(driver)
-    with allure.step(f'Проверка возможности ввода данных, {STREET_TITLE}'):
+    with allure.step('Проверка возможности ввода данных, {}'.format(STREET_TITLE)):
         street = locators.element_is_clickable(driver, order_form.street)
-    with allure.step(f'Очистить {STREET_TITLE}'):
+    with allure.step('Очистить {}'.format(STREET_TITLE)):
         street.clear()
-    with allure.step(f'Ввод, {STREET_TITLE}, {VALID_DATA_TEXT}'):
+    with allure.step('Ввод, {}, {}'.format(STREET_TITLE, VALID_DATA_TEXT)):
         street.send_keys(street_param)
     logger.info('Validation text is not present' + ', ' + STREET_TITLE + ', input data: ' + street_param)
     with allure.step('Проверка, что валидация не отображается'):
@@ -144,15 +144,15 @@ def test_street_validation_msg(driver, main_page, order_form):
     logger.info('Check validation text for street field')
     with allure.step('Открыть форму быстрой заявки, если она не отображается'):
         order_form.open_form(driver)
-    with allure.step(f'Проверка возможности ввода данных, {STREET_TITLE}'):
+    with allure.step('Проверка возможности ввода данных, {}'.format(STREET_TITLE)):
         street = locators.element_is_clickable(driver, order_form.street)
-    with allure.step(f'Очистить {STREET_TITLE}'):
+    with allure.step('Очистить {}'.format(STREET_TITLE)):
         street.clear()
-    with allure.step(f'Ввод, {STREET_TITLE}, не{VALID_DATA_TEXT}'):
+    with allure.step('Ввод, {}, не{}'.format(STREET_TITLE, VALID_DATA_TEXT)):
         street.send_keys('street')
     with allure.step('Получить текст валидации при вводе невалидных данных'):
         text1 = locators.element_is_visible(driver, order_form.street_error_msg).text
-    with allure.step(f'Проверка отображения иконки очистки, {STREET_TITLE}'):
+    with allure.step('Проверка отображения иконки очистки, {}'.format(STREET_TITLE)):
         btn = locators.element_is_visible(driver, order_form.street_clear_btn)
     with allure.step('Нажать иконку очистки поля'):
         btn.click()
@@ -173,14 +173,14 @@ def test_name_validation_neg(driver, main_page, order_form, name_param):
     logger.info('Negative validation name field')
     with allure.step('Открыть форму быстрой заявки, если она не отображается'):
         order_form.open_form(driver)
-    with allure.step(f'Проверка возможности ввода данных, {NAME_TITLE}'):
+    with allure.step('Проверка возможности ввода данных, {}'.format(NAME_TITLE)):
         name = locators.element_is_clickable(driver, order_form.name)
-    with allure.step(f'Очистить {NAME_TITLE}'):
+    with allure.step('Очистить {}'.format(NAME_TITLE)):
         name.clear()
-    with allure.step(f'Ввод, {NAME_TITLE}, не{VALID_DATA_TEXT}'):
+    with allure.step('Ввод, {}, не{}'.format(NAME_TITLE, VALID_DATA_TEXT)):
         name.send_keys(name_param)
     logger.info('Validation text is present' + ', ' + NAME_TITLE + ', input data: ' + name_param)
-    with allure.step(f'Проверка отображения сообщения, не{VALID_DATA_TEXT}'):
+    with allure.step('Проверка отображения сообщения, не{}'.format(VALID_DATA_TEXT)):
         assert locators.element_is_visible(driver, order_form.name_error_msg)
 
 
@@ -194,11 +194,11 @@ def test_name_validation_pos(driver, main_page, order_form, name_param):
     logger.info('Positive validation name field')
     with allure.step('Открыть форму быстрой заявки, если она не отображается'):
         order_form.open_form(driver)
-    with allure.step(f'Проверка возможности ввода данных, {NAME_TITLE}'):
+    with allure.step('Проверка возможности ввода данных, {}'.format(NAME_TITLE)):
         name = locators.element_is_clickable(driver, order_form.name)
-    with allure.step(f'Очистить {NAME_TITLE}'):
+    with allure.step('Очистить {}'.format(NAME_TITLE)):
         name.clear()
-    with allure.step(f'Ввод, {NAME_TITLE}, {VALID_DATA_TEXT}'):
+    with allure.step('Ввод, {}, {}'.format(NAME_TITLE, VALID_DATA_TEXT)):
         name.send_keys(name_param)
     logger.info('Validation text is not present' + ', ' + NAME_TITLE + ', input data: ' + name_param)
     with allure.step('Проверка, что валидация не отображается'):
@@ -216,29 +216,29 @@ def test_create_quick_order(driver, main_page, order_form):
     with allure.step('Открыть форму быстрой заявки, если она не отображается'):
         order_form.open_form(driver)
     with allure.step('Очистить поля формы'):
-        with allure.step(f'Очистить {STREET_TITLE}'):
+        with allure.step('Очистить {}'.format(STREET_TITLE)):
             locators.element_is_clickable(driver, order_form.street).clear()
-        with allure.step(f'Очистить {HOUSE_TITLE}'):
+        with allure.step('Очистить {}'.format(HOUSE_TITLE)):
             locators.element_is_clickable(driver, order_form.house).clear()
-        with allure.step(f'Очистить {FLAT_TITLE}'):
+        with allure.step('Очистить {}'.format(FLAT_TITLE)):
             locators.element_is_clickable(driver, order_form.flat).clear()
-        with allure.step(f'Очистить {NAME_TITLE}'):
+        with allure.step('Очистить {}'.format(NAME_TITLE)):
             locators.element_is_clickable(driver, order_form.name).clear()
-        with allure.step(f'Очистить {PHONE_TITLE}'):
+        with allure.step('Очистить {}'.format(PHONE_TITLE)):
             locators.element_is_clickable(driver, order_form.phone).clear()
-    with allure.step(f'Ввод данных, {STREET_TITLE}'):
+    with allure.step('Ввод данных, {}'.format(STREET_TITLE)):
         locators.element_is_clickable(driver, order_form.street).send_keys('Тестовая')
     with allure.step('Время для подгрузки js-скрипта'):
         time.sleep(settings.PAUSE_TIME)
-    with allure.step(f'Ввод данных, {HOUSE_TITLE}'):
+    with allure.step('Ввод данных, {}'.format(HOUSE_TITLE)):
         locators.element_is_clickable(driver, order_form.house).send_keys(random.randint(1, 999))
     with allure.step('Время для подгрузки js-скрипта'):
         time.sleep(settings.PAUSE_TIME)
-    with allure.step(f'Ввод данных, {FLAT_TITLE}'):
+    with allure.step('Ввод данных, {}'.format(FLAT_TITLE)):
         locators.element_is_clickable(driver, order_form.flat).send_keys(random.randint(1, 999))
-    with allure.step(f'Ввод данных, {NAME_TITLE}'):
+    with allure.step('Ввод данных, {}'.format(NAME_TITLE)):
         locators.element_is_clickable(driver, order_form.name).send_keys('автотест')
-    with allure.step(f'Ввод данных, {PHONE_TITLE}'):
+    with allure.step('Ввод данных, {}'.format(PHONE_TITLE)):
         locators.element_is_clickable(driver, order_form.phone).send_keys('9998887766')
     with allure.step('Проверка отображения кнопки отправки заявки'):
         apl = locators.element_is_clickable(driver, order_form.apply_btn)

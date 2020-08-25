@@ -31,13 +31,13 @@ def pytest_addoption(parser):
 class MyListener(AbstractEventListener):
 
     def before_navigate_to(self, url, driver):
-        logging.info(f"Navigate to {url}")
+        logging.info('Navigate to {}'.format(url))
 
     def after_navigate_to(self, url, driver):
-        logging.info(f"The current URL is {url}")
+        logging.info('The current URL is {}'.format(url))
 
     def before_quit(self, driver):
-        logging.info(f"Browser is ready to quit {driver}")
+        logging.info('Browser is ready to quit {}'.format(driver))
 
 
 @pytest.fixture(scope='session')
@@ -52,7 +52,7 @@ def get_region(request):
 
 @pytest.fixture(scope='session')
 def driver(get_page, get_region):
-    base_url = f'https://{settings.REGIONS[get_region]}.rt.ru'
+    base_url = 'https://{}.rt.ru'.format(settings.REGIONS[get_region])
     logger.info('Start test')
     caps = DesiredCapabilities.CHROME
     options = webdriver.ChromeOptions()
@@ -63,17 +63,17 @@ def driver(get_page, get_region):
     wd = EventFiringWebDriver(webdriver.Chrome(desired_capabilities=caps,
                                                options=options), MyListener())
     if get_page == 'package':
-        wd.get(url=f'{base_url}/packages/tariffs')
+        wd.get(url='{}/packages/tariffs'.format(base_url))
     elif get_page == 'internet':
-        wd.get(url=f'{base_url}]/homeinternet/order_internet')
+        wd.get(url='{}]/homeinternet/order_internet'.format(base_url))
     elif get_page == 'wink':
-        wd.get(url=f'{base_url}/hometv')
+        wd.get(url='{}/hometv'.format(base_url))
     elif get_page == 'mobile':
-        wd.get(url=f'{base_url}/mobile/mobile_tariff')
+        wd.get(url='{}/mobile/mobile_tariff'.format(base_url))
     elif get_page == 'video':
-        wd.get(url=f'{base_url}/videocontrol')
+        wd.get(url='{}/videocontrol'.format(base_url))
     elif get_page == 'phone':
-        wd.get(url=f'{base_url}/hometel')
+        wd.get(url='{}/hometel'.format(base_url))
     else:
         wd.get(base_url)
 

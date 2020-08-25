@@ -13,7 +13,7 @@ class MainPage(BasePage):
                                               'div > div > div.v--modal-box.v--modal > div > div')
 
     def get_cards(self, driver):
-        js = f'document.getElementsByClassName("{self.tariff_cards}")'
+        js = 'document.getElementsByClassName("{}")'.format(self.tariff_cards)
         return driver.execute_script(js)
 
     def scroll_to_form(self, driver):
