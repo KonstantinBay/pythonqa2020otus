@@ -7,7 +7,7 @@ pipeline {
       }
           stage('generate allure report') {
       steps {
-        sh 'allure includeProperties: false, jdk: '', results: [[path: '/var/jenkins_home/workspace/otus_project_pipeline/allure-results']]'
+        sh "allure jdk: '', report: '/var/jenkins_home/workspace/otus_project_pipeline/allure-results', results: [[path: 'allure-results']]"
       }
     }
   }
